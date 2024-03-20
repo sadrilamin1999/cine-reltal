@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import MovieList from "./components/MovieList";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
           <MovieList />
         </div>
       </main>
+      <Footer />
     </>
   );
 };
