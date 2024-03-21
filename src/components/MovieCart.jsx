@@ -1,16 +1,30 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Rating from "./Rating";
 import MovieDetailsModal from "./MovieDetailsModal";
+import { MovieContext } from "../contex";
 
 const MovieCart = ({ movie }) => {
   const [showModal, setShowModal] = useState(false);
   const { cover, title, genre, rating, price } = movie;
+
+  const { movieData, setMovieData } = useContext(MovieContext);
 
   const handleShowModal = () => {
     setShowModal(true);
   };
   const handleCloseModal = () => {
     setShowModal(false);
+  };
+  const handleAddToCart = (e, movie) => {
+    e.stopPropagation();
+
+    const found = movieData.find((item) => item.id === movie.id);
+
+    if (!found) {
+      setMovieData([...movieData, movie]);
+    } else {
+      alert("Already added!");
+    }
   };
 
   return (
@@ -30,6 +44,7 @@ const MovieCart = ({ movie }) => {
             <a
               className="bg-primary rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm"
               href="#"
+              onClick={(e) => handleAddToCart(e, movie)}
             >
               <span>{`$${price} | Add to Cart`} </span>
             </a>
