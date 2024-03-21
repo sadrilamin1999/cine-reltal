@@ -8,7 +8,7 @@ const AddToCardModal = ({ onClose }) => {
 
   const handleRemove = (movieId) => {
     const newMovies = movieData.filter((movie) => movie.id !== movieId);
-    setMovieData(newMovies);
+    setMovieData([...newMovies]);
   };
   return (
     <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
