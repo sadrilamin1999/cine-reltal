@@ -5,7 +5,7 @@ const Rating = ({ value }) => {
   return (
     <>
       {stars.map((star, index) => (
-        <img id={index} src={star} width="14" height="14" alt="star" />
+        <img key={index} src={star} width="14" height="14" alt="star" />
       ))}
     </>
   );

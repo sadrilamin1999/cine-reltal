@@ -23,21 +23,21 @@ const Header = () => {
     <header>
       {showCart && <AddToCardModal onClose={handleCloseAddToCart} />}
       <nav className="container flex items-center justify-between space-x-10 py-6">
-        <a href="index.html">
+        <button href="index.html">
           <img src={Logo} width="139" height="26" alt="Logo" />
-        </a>
+        </button>
 
         <ul className="flex items-center space-x-5">
           <li>
-            <a
+            <button
               className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block"
               href="/"
             >
               <img src={Ring} width="24" height="24" alt="Ring" />
-            </a>
+            </button>
           </li>
           <li>
-            <a
+            <button
               className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block"
               href="#"
               onClick={() => setDarkMode((darkMode) => !darkMode)}
@@ -48,10 +48,10 @@ const Header = () => {
                 height="24"
                 alt="Moon"
               />
-            </a>
+            </button>
           </li>
           <li className="relative">
-            <a
+            <button
               className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block"
               href="#"
               onClick={() => setShowCart(true)}
@@ -62,7 +62,7 @@ const Header = () => {
                 height="24"
                 alt="Shoping-cart"
               />
-            </a>
+            </button>
             {movieData?.length > 0 && (
               <span className=" absolute -top-2 -right-2 w-6 h-6 bg-primary rounded-full flex justify-center items-center text-green-50 text-md">
                 {movieData.length}

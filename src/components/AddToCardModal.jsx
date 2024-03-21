@@ -1,14 +1,17 @@
 import { useContext } from "react";
 import Delete from "../assets/delete.svg";
 import CheckOut from "../assets/icons/checkout.svg";
+
+import { toast } from "react-toastify";
 import { MovieContext } from "../contex";
 
 const AddToCardModal = ({ onClose }) => {
   const { movieData, setMovieData } = useContext(MovieContext);
 
-  const handleRemove = (movieId) => {
-    const newMovies = movieData.filter((movie) => movie.id !== movieId);
+  const handleRemove = (movie) => {
+    const newMovies = movieData.filter((item) => item.id !== movie.id);
     setMovieData([...newMovies]);
+    toast.success(`${movie.title} removed!`);
   };
   return (
     <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
@@ -53,7 +56,7 @@ const AddToCardModal = ({ onClose }) => {
                     <img className="w-5 h-5" src={Delete} alt="Delete" />
                     <span
                       className="max-md:hidden"
-                      onClick={() => handleRemove(movie.id)}
+                      onClick={() => handleRemove(movie)}
                     >
                       Remove
                     </span>
@@ -64,20 +67,20 @@ const AddToCardModal = ({ onClose }) => {
           ))}
 
           <div className="flex items-center justify-end gap-2">
-            <a
+            <button
               className="rounded-md p-2 md:px-4 inline-flex items-center space-x-2 bg-primary text-[#171923] text-sm"
               href="#"
             >
               <img src={CheckOut} width="24" height="24" alt="Check out" />
               <span>Checkout</span>
-            </a>
-            <a
+            </button>
+            <button
               className="border border-[#74766F] rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#6F6F6F] dark:text-gray-200 font-semibold text-sm"
               href="#"
               onClick={onClose}
             >
               Cancel
-            </a>
+            </button>
           </div>
         </div>
       </div>
